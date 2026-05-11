@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Cartão</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header, footer {
+    background: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+nav {
+    background: #333;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+#formulario {
+    flex: 1;
+}
+
+#cartao {
+    flex: 2;
+    border: 2px solid black;
+    padding: 20px;
+    text-align: center;
+}
+
+.quadrado {
+    border: 1px solid red;
+    margin: 10px;
+    padding: 10px;
+}
+
+input, button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+}
+
+input[type="color"] {
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+    }
+
+    #formulario, #cartao {
+        width: 100%;
+    }
+
+    input, button {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Editor de Cartão</h1>
+</header>
+
+<nav>
+<a href="index.html">Apresentação</a>
+<a href="editor.html">Trabalho 1</a>
+<a href="#">Trabalho 2</a>
+<a href="#">Trabalho 3</a>
+</nav>
+
+<main>
+
+<div id="formulario">
+
+<h2>Editar Cartão</h2>
+
+<label>Texto</label>
+<input type="text" id="texto">
+
+<button id="btnAdd">Adicionar Texto</button>
+
+<label>Índice (1 a 10)</label>
+<input type="number" id="indice" value="1" min="1" max="10">
+
+<button id="btnRemove">Remover Elemento</button>
+
+<label>Tamanho da Fonte</label>
+<input type="range" id="fonte" min="10" max="50">
+
+<label>Cor do Fundo</label>
+<input type="color" id="cor">
+
+<label>Imagem</label>
+<input type="file" id="imagem">
+
+</div>
+
+<div id="cartao">
+<h2>Seu Cartão</h2>
+</div>
+
+</main>
+
+<footer>
+<p>Editor com JavaScript</p>
+</footer>
+
+<script>
+
+let cartao = document.querySelector("#cartao");
+let texto = document.querySelector("#texto");
+let indice = document.querySelector("#indice");
+let fonte = document.querySelector("#fonte");
+let cor = document.querySelector("#cor");
+let imagemInput = document.querySelector("#imagem");
+
+let imagem = null;
+
+// ADICIONAR 
+document.querySelector("#btnAdd").addEventListener("click", function() {
+    let valor = texto.value.trim();
+    if (valor === "") return;
+
+    let div = document.createElement("div");
+    div.className = "quadrado";
+    div.textContent = valor;
+
+    let lista = document.querySelectorAll(".quadrado");
+    let i = parseInt(indice.value) - 1;
+
+    if (i < 0 || i > 9) return;
+
+    if (i >= lista.length) {
+        cartao.appendChild(div);
+    } else {
+        cartao.insertBefore(div, lista[i]);
+    }
+});
+
+// REMOVER
+document.querySelector("#btnRemove").addEventListener("click", function() {
+    let lista = document.querySelectorAll(".quadrado");
+    let i = indice.value - 1;
+
+    if (i < 0 || i > 9) return;
+
+    if (lista[i]) {
+        lista[i].remove();
+    }
+});
+
+// FONTE
+fonte.addEventListener("input", function() {
+    let lista = document.querySelectorAll(".quadrado");
+    let i = indice.value - 1;
+
+    if (lista[i]) {
+        lista[i].style.fontSize = fonte.value + "px";
+    }
+});
+
+// COR
+cor.addEventListener("input", function() {
+    cartao.style.backgroundColor = cor.value;
+});
+
+// IMAGEM
+imagemInput.addEventListener("change", function(e) {
+    let file = e.target.files[0];
+    if (!file) return;
+
+    let url = URL.createObjectURL(file);
+
+    if (!imagem) {
+        imagem = document.createElement("img");
+        cartao.appendChild(imagem);
+    }
+
+    imagem.src = url;
+    imagem.style.width = "50%";
+});
+
+</script>
+
+</body>
+</html>
