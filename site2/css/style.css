@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f0f0f0;
+    color: #222;
+}
+
+/* HEADER */
+header {
+    background: #1e1e2e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+/* NAV */
+nav {
+    background: #2a2a3e;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #444466;
+}
+
+/* FOOTER */
+footer {
+    background: #1e1e2e;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+    margin-top: 40px;
+    font-size: 0.85rem;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+/* PÁGINA INICIAL - cards dos trabalhos */
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    min-width: 220px;
+}
+
+.card h2 {
+    margin-bottom: 8px;
+    color: #1e1e2e;
+}
+
+.card p {
+    color: #555;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.card a {
+    display: inline-block;
+    background: #1e1e2e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.card a:hover {
+    background: #444466;
+}
+
+/* SOBRE O SITE - texto explicativo */
+.sobre-texto {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 20px;
+    line-height: 1.7;
+    color: #333;
+}
+
+.sobre-texto h2 {
+    color: #1e1e2e;
+    margin-bottom: 10px;
+}
+
+.sobre-texto p {
+    margin-bottom: 12px;
+}
+
+/* EDITOR - layout lado a lado */
+.editor-layout {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.painel {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    min-width: 260px;
+}
+
+.painel h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: #1e1e2e;
+}
+
+/* Formulário do editor */
+.form-grupo {
+    margin-bottom: 14px;
+}
+
+.form-grupo label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.form-grupo input[type="text"],
+.form-grupo input[type="url"],
+.form-grupo select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.form-grupo input[type="color"] {
+    width: 50px;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.form-grupo input[type="range"] {
+    width: 100%;
+}
+
+.linha {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+/* Botões */
+button {
+    padding: 9px 18px;
+    background: #1e1e2e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    margin-right: 6px;
+    margin-top: 6px;
+}
+
+button:hover {
+    background: #444466;
+}
+
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+button.vermelho {
+    background: #c0392b;
+}
+
+button.vermelho:hover {
+    background: #922b21;
+}
+
+/* Cartão de pré-visualização */
+#cartao {
+    min-height: 280px;
+    background: #f9f9f9;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.elemento-cartao {
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 4px;
+    word-break: break-word;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.elemento-cartao:hover {
+    border-color: #aaa;
+}
+
+.elemento-cartao.selecionado {
+    border-color: #1e1e2e;
+}
+
+.img-cartao {
+    max-width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+}
+
+#aviso-vazio {
+    color: #aaa;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 0.9rem;
+}
+
+/* Lista de elementos */
+#lista-elementos {
+    margin-top: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.item-lista {
+    padding: 7px 10px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+.item-lista:hover {
+    background: #f5f5ff;
+}
+
+.item-lista.selecionado {
+    background: #e8e8ff;
+    font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .editor-layout {
+        flex-direction: column;
+    }
+    .cards {
+        flex-direction: column;
+    }
+}

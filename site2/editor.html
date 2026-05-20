@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Cartões - Interface Web</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <site-header></site-header>
+    <site-nav></site-nav>
+
+    <main>
+        <div class="container">
+
+            <h2 style="margin-bottom: 6px;">Editor de Cartões</h2>
+            <p style="color:#555; font-size:0.9rem; margin-bottom: 20px;">
+                Adicione elementos ao cartão. Clique em um elemento para selecioná-lo e editar suas propriedades.
+            </p>
+
+            <div class="editor-layout">
+
+                <!-- PAINEL DE CONTROLES -->
+                <div class="painel">
+                    <h2>Adicionar elemento</h2>
+
+                    <div class="form-grupo">
+                        <label for="tipo">Tipo de elemento</label>
+                        <select id="tipo">
+                            <option value="p">Texto (parágrafo)</option>
+                            <option value="h1">Título grande (H1)</option>
+                            <option value="h2">Subtítulo (H2)</option>
+                            <option value="img">Imagem (URL)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo" id="grupo-texto">
+                        <label for="texto">Texto do elemento</label>
+                        <input type="text" id="texto" placeholder="Digite o texto..." maxlength="200">
+                    </div>
+
+                    <div class="form-grupo" id="grupo-img-url" style="display:none;">
+                        <label for="img-url">URL da imagem</label>
+                        <input type="url" id="img-url" placeholder="https://site.com/imagem.jpg">
+                    </div>
+
+                    <div class="linha">
+                        <div class="form-grupo">
+                            <label for="cor-texto">Cor do texto</label>
+                            <input type="color" id="cor-texto" value="#222222" title="Cor do texto">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="bg-elemento">Cor de fundo</label>
+                            <input type="color" id="bg-elemento" value="#ffffff" title="Cor de fundo do elemento">
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="tamanho" id="label-tamanho">Tamanho da fonte: 16px</label>
+                        <input type="range" id="tamanho" min="10" max="60" value="16" step="1">
+                    </div>
+
+                    <button id="btn-adicionar">+ Adicionar</button>
+
+                    <hr style="margin: 20px 0; border-color: #eee;">
+
+                    <h2>Fundo do cartão</h2>
+
+                    <div class="form-grupo">
+                        <label for="bg-cartao">Cor de fundo do cartão</label>
+                        <input type="color" id="bg-cartao" value="#ffffff" title="Cor de fundo do cartão">
+                    </div>
+
+                    <hr style="margin: 20px 0; border-color: #eee;">
+
+                    <h2>Elementos no cartão</h2>
+
+                    <div id="lista-elementos"></div>
+
+                    <div style="margin-top: 10px;">
+                        <button id="btn-subir"   disabled>↑ Subir</button>
+                        <button id="btn-descer"  disabled>↓ Descer</button>
+                        <button id="btn-remover" class="vermelho" disabled>✕ Remover</button>
+                        <button id="btn-limpar"  disabled>🗑 Limpar tudo</button>
+                    </div>
+                </div>
+
+                <!-- CARTÃO DE PRÉ-VISUALIZAÇÃO -->
+                <div class="painel">
+                    <h2>Pré-visualização do cartão</h2>
+                    <div id="cartao">
+                        <p id="aviso-vazio" style="color:#aaa; text-align:center; margin-top:80px; font-size:0.9rem;">
+                            Adicione elementos ao cartão
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <site-footer>Trabalho 1 &mdash; Editor de Cartões 2025</site-footer>
+
+    <script src="js/components.js"></script>
+    <script src="js/editor.js"></script>
+
+</body>
+</html>
